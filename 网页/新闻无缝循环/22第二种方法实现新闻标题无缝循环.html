@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			#hd{
+				width: 500px;
+				height: 40px;
+				margin: 200px auto;
+				border: 8px solid orange;
+				position: relative;
+				/*overflow: hidden;*/
+			}
+			#hd ul{
+				position: absolute;
+				bottom: -40px;
+				left: 0;
+			}
+			#hd ul li{
+				width: 500px;
+				height: 40px;
+				list-style: none;
+				line-height: 40px;
+				text-align: center;
+			}
+		</style>
+		<script src='jquery-3.4.1.js'></script>
+		<script src='jquery.easing.1.3.js'></script>
+		<script>
+			$(function(){
+				setInterval(function(){
+					//让第一个li高度变成0
+					//$("#hd ul li").first().css('height':'0');
+					//$("#hd ul li").first().height(0);
+					//将第一个li追加到ul的最后
+					//$("#hd ul").append($("#hd ul li").first());
+					//让最后一个li的高度逐渐变为40px
+					//$("#hd ul li").last().animate({'height':'40px'},500);
+					$("#hd ul").append($("#hd ul li").first().height(0).animate({'height':'40px'},500));
+				},1000)
+			})
+		</script>
+	</head>
+	<body>
+		<div id="hd">
+			<ul>
+				<li style='background: green;'>新华社：认清美方倒打一耙的把戏</li>
+				<li style='background: red;'>《新闻联播》告诉你：中国经济的底气从何而来</li>
+				<li style='background: orange;'> 最高检依法分别对缪瑞林、邢云、钱引安决定逮捕</li>
+				<li style='background: blue;'>亚洲文明对话大会来了，这份详细指南请注意查收</li>
+				<!--<li style='background: green;'>新华社：认清美方倒打一耙的把戏</li>-->
+			</ul>
+		</div>
+	</body>
+</html>

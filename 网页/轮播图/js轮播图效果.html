@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			#jd{
+				width: 590px;
+				height: 470px;
+				border: 5px solid blue;
+				margin: 20px auto;
+				position: relative;
+			}
+			#jd img{
+				position: absolute;
+				top: 0;
+				left: 0;
+				display: none;
+			}
+			#jd ul{
+				position: absolute;
+				left: 52px;
+				bottom: 24px;
+			}
+			#jd ul li{
+				list-style: none;
+				width: 12px;
+				height: 12px;
+				background: #DDDDDD;
+				float: left;
+				margin: 8px;
+				/*圆角border-radius*/
+				border-radius: 50%;
+			}
+		</style>
+		<script>
+			//注意：多个方式控制同一块元素效果的时候，一定要走同一个变量
+			window.onload=function(){
+				var jd=document.getElementById("jd");
+				var imgs=jd.getElementsByTagName('img');
+				var lis=jd.getElementsByTagName('li');
+				
+				var c=0;//大总管变量
+				//控制图片切换的函数
+				function run(){
+						c++;
+						if(c==8){
+							c=0;
+						}
+						//循环，让所有的图片隐藏，让所有的li变灰
+						for(var i=0;i<8;i++){
+							imgs[i].style.display='none';
+							lis[i].style.background="#DDDDDD";
+						}
+						//让C号图片显示，C号li变白
+						imgs[c].style.display='block';
+						lis[c].style.background='white';
+				}
+				var timer=setInterval(run,1000);
+				//循环，给li加事件
+				for(var i=0;i<lis.length;i++){
+					//给i号li加序号
+					lis[i].xuhao=i;
+					//给i号li加鼠标移入事件
+					lis[i].onmouseover=function(){
+						c=this.xuhao;
+						//停止定时器
+						clearInterval(timer);
+						//循环，让所有的图片隐藏，让所有的li变灰
+						for(var i=0;i<8;i++){
+						imgs[i].style.display='none';
+						lis[i].style.background="#DDDDDD";
+						}
+						//让c对应的图片显示
+						imgs[c].style.display='block';
+						lis[c].style.background='white';
+					}
+					//移入事件结束
+					//移出事件
+					lis[i].onmouseout=function(){
+						timer=setInterval(run,1000);
+					}
+					//移出事件结束
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="jd">
+			<img src="img/11.jpg" style="display:block;"/>
+			<img src="img/12.jpg" />
+			<img src="img/13.jpg" />
+			<img src="img/14.jpg" />
+			<img src="img/15.jpg" />
+			<img src="img/16.jpg" />
+			<img src="img/17.jpg" />
+			<img src="img/18.jpg" />
+			<ul>
+				<li style='background: white;'></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+	</body>
+</html>

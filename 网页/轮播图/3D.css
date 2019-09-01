@@ -1,0 +1,119 @@
+html,body,div,ol,ul,li,p,h1,h2,h3,h4,h5,h6,table,dt,dd,span,input,img{
+	margin:0;
+	padding:0;
+}
+ul,li{
+	list-style:none;
+}
+a{
+	text-decoration:none;
+}
+.dc_left{
+	float:left;
+}
+.dc_right{
+	float:right;
+}
+.dc_clear{
+	content:"";
+	display:block;
+	clear:both;
+}
+.box{
+	width:800px;
+	height:300px;
+	margin:20px auto 0;
+	box-shadow:0 0 10px #000;
+	-webkit-box-shadow:0 0 10px #000;
+	-moz-box-shadow:0 0 10px #000;
+	-o-box-shadow:0 0 10px #000;
+	position:relative;
+}
+.box .dc_carousel{
+	width:100%;
+	height:100%;
+}
+.box .dc_carousel .dc_carousel_img{
+	width:100%;
+	height:90%;
+	overflow:hidden;
+	position:relative;
+}
+.box .dc_carousel .dc_carousel_img ul{
+	width:100%;
+	height:100%;
+	transform-style:preserve-3d;
+	perspective:600px;
+}
+.box .dc_carousel .dc_carousel_img ul li{
+	width:20%;
+	height:90%;
+	position:absolute;
+	box-shadow:-5px 5px 15px #333;
+	-webkit-box-shadow:-5px 5px 15px #333;
+	-moz-box-shadow:-5px 5px 15px #333;
+	-o-box-shadow:-5px 5px 15px #333;
+	opacity:0;
+}.box .dc_carousel .dc_carousel_img ul li img{
+	width:100%;
+	height:100%;
+}
+
+.box .dc_carousel .dc_carousel_img ul .others{
+	top:-40%;
+}
+.box .dc_carousel .dc_carousel_img ul .first{
+	left:40%;
+	opacity:1;
+}
+.box .dc_carousel .dc_carousel_img ul .second{
+	left:60%;
+	transform:rotateY(40deg) scale(.5);
+	opacity:1;
+}
+.box .dc_carousel .dc_carousel_img ul .last{
+	left:20%;
+	transform:rotateY(-40deg) scale(.5);
+	opacity:1;
+}
+.box .dc_carousel .dc_carousel_img ul .third{
+	left:70%;
+	transform:rotateY(50deg) scale(.2);
+	opacity:1;
+}
+.box .dc_carousel .dc_carousel_img ul .last_second{
+	left:10%;
+	transform:rotateY(-50deg) scale(.2);
+	opacity:1;
+}
+.box .dc_carousel .dc_carousel_img ul .dc_change{
+	transform:translate3d(30px, 30px, 30px);
+}
+.box .dc_carousel .dc_carousel_point{
+	width:100%;
+	text-align:center;
+	position:absolute;
+	z-index:30;
+}
+
+.box .dc_carousel .dc_carousel_point li{
+	width:10px;
+	height:10px;
+	list-style:none;
+	border-radius:50%;
+	background:#bbb;
+	display:inline-block
+}
+
+.box .dc_carousel .dc_carousel_point .current_point{
+	background:#3ff;
+
+}.box .dc_carousel .previous,.box .dc_carousel .next{
+	position:absolute;
+	top:40%;
+	font:30px "Times New Roman";
+	cursor:pointer;
+}
+.box .dc_carousel .next{
+	left:94%;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			img{
+				display: block;
+				margin: 0 auto;
+			}
+			#top{
+				margin-top: -132px;
+			}
+		</style>
+		<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+		<script>
+			$(function(){
+				$("#top").animate({'margin-top':'0'},3000,function(){
+//					setTimeout(function(){
+//						$("#top").animate({'margin-top':'-132px'},2000);
+//					},3000)
+//					delay一般写在运动之前，表示让后面的运动延迟多少
+					$("#top").delay(3000).animate({'margin-top':'-132px'},2000);
+				});
+			})
+		</script>
+	</head>
+	<body>
+		<img src="../../上课笔记/jquery/上课笔记/img/236.png" alt="" id='top'/>
+		<img src="../../上课笔记/jquery/上课笔记/img/214.png" alt="" />
+	</body>
+</html>

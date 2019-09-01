@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			#hd{
+				width: 500px;
+				height: 40px;
+				margin: 200px auto;
+				border: 2px solid orange;
+				position: relative;
+				overflow: hidden;
+			}
+			#hd ul{
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			#hd ul li{
+				width: 500px;
+				height: 40px;
+				list-style: none;
+				line-height: 40px;
+				text-align: center;
+			}
+		</style>
+		<script src='jquery-3.4.1.js'></script>
+		<script>
+			$(function(){
+				//大总管变量
+				var c=0;
+				//设置定时器让ul每个一秒钟滑动一次
+				setInterval(function(){
+					c++;
+					if(c==5){
+						//让ul做一个瞬时变化
+						$("#hd ul").css({'top':'0px'});
+						c=1;
+					}
+					var t=c*-40;
+					$("#hd ul").animate({'top':t+'px'},500)
+					
+				},1000)
+			})
+		</script>
+	</head>
+	<body>
+		<div id="hd">
+			<ul>
+				<li style='background: green;'>新华社：认清美方倒打一耙的把戏</li>
+				<li style='background: red;'>《新闻联播》告诉你：中国经济的底气从何而来</li>
+				<li style='background: orange;'> 最高检依法分别对缪瑞林、邢云、钱引安决定逮捕</li>
+				<li style='background: blue;'>亚洲文明对话大会来了，这份详细指南请注意查收</li>
+				<li style='background: green;'>新华社：认清美方倒打一耙的把戏</li>
+			</ul>
+		</div>
+	</body>
+</html>

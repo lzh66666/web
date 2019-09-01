@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+	<style>
+		.item {
+			display: none;
+			width: 300px;
+			height: 400px;
+			overflow: hidden;
+			position: relative;
+		}			
+		.item>img {
+			width: 100%;
+			height: auto;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			margin: auto;
+		}	
+		.item.active {
+			display: block;
+		}
+	</style>
+	<script type="text/javascript">
+		//封装函数、图片显示的部分、传入获取到的div，和被点击的序号
+		window.onload=function(){
+			function toggle(eles, active) {
+				for(var i = eles.length; i--;) {
+					eles[i].className = "item"; //先让所有div隐藏
+				}
+				eles[active].className = "item active";//再让被点击的序号对应的div 显示
+			}
+			//获取按键和div
+			var aBtn = document.getElementsByClassName("btn");
+			var aIem = document.getElementsByClassName("item");
+			var prev = document.getElementsByClassName("prev");
+			var next =  document.getElementsByClassName("next");
+			var nowPage = 0; //定义当前页，默认值为0；
+			    
+			for(var i = aBtn.length; i--;) {
+					aBtn[i].tab = i;
+					aBtn[i].onclick=function(){
+						toggle(aIem,this.tab);
+						nowPage=this.tab; //被点击后，保存当前页的序号
+					}
+			}
+		   //下一页
+			next[0].onclick = function () {			
+					nowPage++;					
+					nowPage %= aBtn.length;
+					toggle(aIem,nowPage);
+			}
+			//上一页
+			prev[0].onclick=function(){
+				nowPage--;
+				if(nowPage ==-1){
+					nowPage = aBtn.length-1;
+				}
+				toggle(aIem,nowPage);				
+			}
+		}
+	</script>
+</head>
+<body>
+    <div>
+    	<div>
+			<button class="prev" >上一页</button>
+			<button class="btn">1</button>
+			<button class="btn">2</button>
+			<button class="btn">3</button>
+			<button class="btn">4</button>
+			<button class="next" >下一页</button>
+		</div>
+		<div>
+			<div class="item active"><img src="img/h10.jpg" height="1191" width="820" /></div>
+			<div class="item"><img src="img/h101.jpg" height="1191" width="820" /></div>
+			<div class="item"><img src="img/h102.jpg" height="1191" width="820" /></div>
+			<div class="item"><img src="img/h101.jpg" height="1191" width="820" /></div>
+		</div>
+    </div>
+</body>
+</html>

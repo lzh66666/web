@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>名师风采</title>
+    <link rel="stylesheet" href="3D.css">
+    <script src="jquery-3.4.1.js"></script>
+    <script>
+        $(function(){
+            var $dc_img=$('.dc_carousel_img li');
+            var $dc_point=$('.dc_carousel_point li');
+            var $dc_left=$('.previous');
+            var $dc_right=$('.next');
+            var nowTime=0,index=0,my;
+            function dc_list(i){
+                $dc_point.eq(i).addClass("current_point").siblings().removeClass('current_point');
+            }
+
+            var dc_class=[];
+            //动态修正class
+            function slide(flag){
+                $dc_img.each(function(i){
+                    dc_class[i]=$(this).attr("class");
+                });
+                console.log(dc_class);
+                $dc_img.each(function(i){
+                    console.log($(this).attr("class"));
+                    if(flag){
+                        var a=i+1;
+                        a%=$dc_img.length;
+                    }
+                    else{
+                        var a=i-1;
+                        a<0?a=$dc_img.length-1:a;
+                    }
+                    $(this).css("transition","").removeClass();
+                    if(dc_class[a]!="others"){
+//                    &&dc_class[a-1]!="others"
+                        $(this).css("transition","0.5s");
+                    }
+                    $(this).addClass(dc_class[a]);
+                })
+            }
+            //左右变动函数
+            function dc_leftImg(){
+                if(new Date()-nowTime>500){
+                    nowTime=new Date();
+                    index--;
+                    index<0?index=$dc_point.length-1:index;
+                    dc_list(index);
+                    slide(false);
+                }
+            }
+            function dc_rightImg(){
+                if(new Date()-nowTime>500){
+                    nowTime=new Date();
+                    index++;
+                    index=index%$dc_point.length;
+                    dc_list(index);
+                    slide(true);
+                }
+            }
+            //左右按钮点击函数
+            $dc_left.click(function(){
+                dc_leftImg();
+                autoPlay(false);
+            });
+            $dc_right.click(function(){
+                dc_rightImg();
+                autoPlay(true);
+            });
+            /**
+             * 自动播放函数
+             * */
+            var time;
+            function autoPlay(flag){
+                clearInterval(time);
+                if(flag){
+                    time=setInterval(dc_rightImg,2000);
+                }
+                else{
+                    time=setInterval(dc_leftImg,2000);
+                }
+                my=autoPlay.arguments[0];
+            }
+            autoPlay(true);
+
+            $dc_img.mouseover(function(){
+                clearInterval(time);
+                console.log($(this));
+            });
+            $dc_img.mouseout(function(){
+                autoPlay(my);
+            });
+
+        })
+    </script>
+</head>
+<body>
+<div class="box">
+    <div class="dc_carousel" id="dc_carousel">
+        <div class="dc_carousel_img">
+            <ul>
+                <li class="first"><a href=""><img src="img/11.jpg" alt=""></a></li>
+                <li class="second"><a href=""><img src="img/12.jpg" alt=""></a></li>
+                <li class="third"><a href=""><img src="img/13.jpg" alt=""></a></li>
+                <li class="others"><a href=""><img src="img/14.jpg" alt=""></a></li>
+                <li class="others"><a href=""><img src="img/15.jpg" alt=""></a></li>
+                <li class="others"><a href=""><img src="img/16.jpg" alt=""></a></li>
+                <li class="others"><a href=""><img src="img/17.jpg" alt=""></a></li>
+                <li class="last_second"><a href=""><img src="img/18.jpg" alt=""></a></li>
+                <li class="last"><a href=""><img src="img/11.jpg" alt=""></a></li>
+            </ul>
+        </div>
+        <div class="dc_carousel_point">
+            <ul>
+                <li class="current_point"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <span class="previous dc_left"><</span>
+        <span class="next dc_right">></span>
+    </div>
+</div>
+</body>
+</html>

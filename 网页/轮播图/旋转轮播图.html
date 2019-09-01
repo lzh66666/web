@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css" media="screen">
+		body{
+			perspective: 1000px;
+		}
+		section{
+			width: 300px;
+			height: 200px;
+			margin: 100px auto;
+			background: url(img/13.jpg) no-repeat;
+			background-size: cover;
+			position: relative;
+			transform-style: preserve-3d;/*让父盒子以3D效果显示*/
+			transition: all 10s linear;
+		}
+		section:hover{
+			transform: rotateY(360deg);
+
+		}
+		section div{
+			width: 300px;
+			height:  200px;
+			background: url(img/14.jpg) no-repeat;
+			background-size: cover;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		section div:nth-child(1){
+			transform: rotateY(0deg) translateZ(400px);
+		}
+		section div:nth-child(2){
+			transform: rotateY(60deg) translateZ(400px);
+		}
+		section div:nth-child(3){
+			transform: rotateY(120deg) translateZ(400px);
+		}
+		section div:nth-child(4){
+			transform: rotateY(180deg) translateZ(400px);
+		}
+		section div:nth-child(5){
+			transform: rotateY(240deg) translateZ(400px);
+		}
+		section div:nth-child(6){
+			transform: rotateY(300deg) translateZ(400px);
+		}
+	</style>
+</head>
+<body>
+	<section>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</section>
+</body>
+</html>
